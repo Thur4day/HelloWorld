@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="time_array">
+        <item> 年前</item>
+        <item> 月前</item>
+        <item> 天前</item>
+        <item> 小时前</item>
+        <item> 分钟前</item>
+        <item> 秒前</item>
+        <item> 刚刚</item>
+    </string-array>
+
+    <string-array name="once_time_array">
+        <item>周日</item>
+        <item>周一</item>
+        <item>周二</item>
+        <item>周三</item>
+        <item>周四</item>
+        <item>周五</item>
+        <item>周六</item>
+
+    </string-array>
+
+</resources>
