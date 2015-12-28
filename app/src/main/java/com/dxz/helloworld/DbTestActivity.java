@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.dxz.helloworld.greendao.DaoMaster;
 import com.dxz.helloworld.greendao.users;
-import com.dxz.helloworld.provider.MyContentProvider;
+import com.dxz.helloworld.provider.MyProvider;
 import com.dxz.helloworld.provider.User;
 
 import org.xutils.DbManager;
@@ -73,7 +73,7 @@ public class DbTestActivity extends Activity implements View.OnClickListener {
         values.put("phone", "18782956011");
         long time = System.currentTimeMillis();
 //      System.out.println("start:");
-        getContentResolver().insert(MyContentProvider.CONTENT_URI, values);
+        getContentResolver().insert(MyProvider.CONTENT_URI, values);
 //      System.out.println("end:"+(System.currentTimeMillis() - time));
         return (System.currentTimeMillis() - time);
     }
@@ -136,7 +136,7 @@ public class DbTestActivity extends Activity implements View.OnClickListener {
         @Override
         protected String doInBackground(Void... params) {
             long time = System.currentTimeMillis();
-            getContentResolver().delete(MyContentProvider.CONTENT_URI, null, null);
+            getContentResolver().delete(MyProvider.CONTENT_URI, null, null);
             publishProgress("provider deleteall:耗时" + (System.currentTimeMillis() - time));
 
             long toalCount = 0;
@@ -248,7 +248,7 @@ public class DbTestActivity extends Activity implements View.OnClickListener {
         @Override
         protected String doInBackground(Void... params) {
             long time = System.currentTimeMillis();
-            Cursor cursor = getContentResolver().query(MyContentProvider.CONTENT_URI, null, null, null, null);
+            Cursor cursor = getContentResolver().query(MyProvider.CONTENT_URI, null, null, null, null);
             publishProgress("provider queryAll" + cursor.getCount() + "条数据：耗时" + (System.currentTimeMillis() - time));
             //
             cursor.moveToFirst();
@@ -314,7 +314,7 @@ public class DbTestActivity extends Activity implements View.OnClickListener {
      */
     public long providerInsertBacth() {
         ContentProviderClient client = getContentResolver()
-                .acquireContentProviderClient(MyContentProvider.AUTHORITY);
+                .acquireContentProviderClient(MyProvider.AUTHORITY);
         ArrayList<ContentProviderOperation> mOperations = new ArrayList<ContentProviderOperation>();
         ContentValues values = new ContentValues();
         values.put("name", "zhuyan");
@@ -322,7 +322,7 @@ public class DbTestActivity extends Activity implements View.OnClickListener {
         long time = System.currentTimeMillis();
         for (int i = 0; i < INSERT_COUNT; i++) {
             mOperations.add(ContentProviderOperation
-                    .newInsert(MyContentProvider.CONTENT_URI).withValues(values).build());
+                    .newInsert(MyProvider.CONTENT_URI).withValues(values).build());
             if (mOperations.size() >= 100) {
                 try {
                     client.applyBatch(mOperations);
