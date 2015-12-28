@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 
+import org.xutils.x;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class MainApplication extends Application {
         if (sMainApplication == null) {
             sMainApplication = this;
         }
+        x.Ext.init(sMainApplication);
     }
 
 

@@ -5,7 +5,8 @@ import android.app.Application;
 import android.app.Dialog;
 import android.os.Bundle;
 
-import com.hwand.pinhaowanr.MainApplication;
+import com.dxz.helloworld.MainApplication;
+
 
 /**
  * Created by jake on 3/6/15.

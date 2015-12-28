@@ -28,4 +28,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.1.1'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.nineoldandroids:library:2.4.0'
+    compile 'org.xutils:xutils:3.1.20'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.7.0'
+    compile files('libs/greendao-2.1.0.jar')
 }

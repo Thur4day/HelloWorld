@@ -4,57 +4,64 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 
-import com.hwand.pinhaowanr.utils.AndTools;
+import com.dxz.helloworld.utils.AndTools;
 
 /**
  * Created by jake on 3/6/15.
  */
-public class HiDialog extends Dialog implements HiDismissRequestContextLifeCycle.OnDismissImmeRequest{
+public class HiDialog extends Dialog implements HiDismissRequestContextLifeCycle.OnDismissImmeRequest {
 
-    /** life cycle */
+    /**
+     * life cycle
+     */
     private HiDismissRequestContextLifeCycle mLifeCycle = null;
 
-    /** the context */
+    /**
+     * the context
+     */
     private Activity mContext = null;
 
     /**
      * Constructor
+     *
      * @param context
      */
     public HiDialog(Context context) {
         super(context);
-        mContext = (Activity)context;
+        mContext = (Activity) context;
     }
 
     /**
      * Constructor
+     *
      * @param context
      * @param theme
      */
     public HiDialog(Context context, int theme) {
         super(context, theme);
-        mContext = (Activity)context;
+        mContext = (Activity) context;
     }
 
     /**
      * Constructor
+     *
      * @param context
      * @param cancelable
      * @param cancelListener
      */
     protected HiDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
-        mContext = (Activity)context;
+        mContext = (Activity) context;
     }
 
     /**
      * show
      */
-    public void show(){
-        if(AndTools.isActivitySafeForDialog(mContext)){
+    public void show() {
+        if (AndTools.isActivitySafeForDialog(mContext)) {
             super.show();
 
-            if(null == mLifeCycle){
+            if (null == mLifeCycle) {
                 mLifeCycle = new HiDismissRequestContextLifeCycle();
             }
 
@@ -65,9 +72,9 @@ public class HiDialog extends Dialog implements HiDismissRequestContextLifeCycle
     /**
      * dismiss
      */
-    public void dismiss(){
+    public void dismiss() {
 
-        if(null != mLifeCycle){
+        if (null != mLifeCycle) {
             mLifeCycle.remove();
         }
 

@@ -4,56 +4,63 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 
-import com.hwand.pinhaowanr.utils.AndTools;
+import com.dxz.helloworld.utils.AndTools;
+
 
 /**
  * Created by jake on 3/6/15.
  */
-public class HiProgressDialog extends ProgressDialog implements HiDismissRequestContextLifeCycle.OnDismissImmeRequest{
+public class HiProgressDialog extends ProgressDialog implements HiDismissRequestContextLifeCycle.OnDismissImmeRequest {
 
-    /** life cycle */
+    /**
+     * life cycle
+     */
     private HiDismissRequestContextLifeCycle mLifeCycle = null;
 
-    /** the context */
+    /**
+     * the context
+     */
     private Activity mContext = null;
 
     /**
      * Constructor
+     *
      * @param context
      */
     public HiProgressDialog(Context context) {
         super(context);
-        mContext = (Activity)context;
+        mContext = (Activity) context;
     }
 
     /**
      * Constructor
+     *
      * @param context
      * @param theme
      */
     public HiProgressDialog(Context context, int theme) {
         super(context, theme);
-        mContext = (Activity)context;
+        mContext = (Activity) context;
     }
 
     public static HiProgressDialog show(Context context, CharSequence title,
-                                      CharSequence message) {
+                                        CharSequence message) {
         return show(context, title, message, false);
     }
 
     public static HiProgressDialog show(Context context, CharSequence title,
-                                      CharSequence message, boolean indeterminate) {
+                                        CharSequence message, boolean indeterminate) {
         return show(context, title, message, indeterminate, false, null);
     }
 
     public static HiProgressDialog show(Context context, CharSequence title,
-                                      CharSequence message, boolean indeterminate, boolean cancelable) {
+                                        CharSequence message, boolean indeterminate, boolean cancelable) {
         return show(context, title, message, indeterminate, cancelable, null);
     }
 
     public static HiProgressDialog show(Context context, CharSequence title,
-                                      CharSequence message, boolean indeterminate,
-                                      boolean cancelable, OnCancelListener cancelListener) {
+                                        CharSequence message, boolean indeterminate,
+                                        boolean cancelable, OnCancelListener cancelListener) {
         HiProgressDialog dialog = new HiProgressDialog(context);
         dialog.setTitle(title);
         dialog.setMessage(message);
@@ -67,11 +74,11 @@ public class HiProgressDialog extends ProgressDialog implements HiDismissRequest
     /**
      * show
      */
-    public void show(){
-        if(AndTools.isActivitySafeForDialog(mContext)){
+    public void show() {
+        if (AndTools.isActivitySafeForDialog(mContext)) {
             super.show();
 
-            if(null == mLifeCycle){
+            if (null == mLifeCycle) {
                 mLifeCycle = new HiDismissRequestContextLifeCycle();
             }
 
@@ -82,9 +89,9 @@ public class HiProgressDialog extends ProgressDialog implements HiDismissRequest
     /**
      * dismiss
      */
-    public void dismiss(){
+    public void dismiss() {
 
-        if(null != mLifeCycle){
+        if (null != mLifeCycle) {
             mLifeCycle.remove();
         }
 
